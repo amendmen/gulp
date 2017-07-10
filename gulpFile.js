@@ -1,18 +1,18 @@
-var gulp        	= require('gulp'),
-	pug				= require('gulp-pug'),
-	stylus			= require('gulp-stylus'),
-	babel 			= require('gulp-babel'),
-	uglify    		= require('gulp-uglifyjs'),
-	browserSync		= require('browser-sync'),
-	sourcemaps		= require('gulp-sourcemaps'),
+var     gulp        	= require('gulp'),
+	pug		= require('gulp-pug'),
+	stylus		= require('gulp-stylus'),
+	babel 		= require('gulp-babel'),
+	uglify    	= require('gulp-uglifyjs'),
+	browserSync	= require('browser-sync'),
+	sourcemaps	= require('gulp-sourcemaps'),
 	autoprefixer    = require('gulp-autoprefixer'),
 	cssnano         = require('gulp-cssnano'),
-	imagemin	    = require('gulp-imagemin'),
+	imagemin	= require('gulp-imagemin'),
 	fontmin         = require('gulp-fontmin'),
-	rimraf  		= require('gulp-rimraf'),
+	rimraf  	= require('gulp-rimraf'),
 	plumber         = require('gulp-plumber'),
-	postcss 		= require('gulp-postcss'),
-	rename 			= require('gulp-rename'),
+	postcss 	= require('gulp-postcss'),
+	rename 		= require('gulp-rename'),
 	concat          = require('gulp-concat');
 
 
@@ -45,9 +45,9 @@ gulp.task('html:build', function buildHTML() {
 
 gulp.task('scripts', function() {
     return gulp.src([
-    		'src/**/*.js',
-    		'src/jquery/jquery.min.js',     //для примера
-    		'src/bootstrap/dist/js/bootstrap.min.js', //укажите свои скрипты в нужном порядке
+    		'src/js/*.js',
+    		'src/jquery/jquery.min.js',    
+    		'src/bootstrap/dist/js/bootstrap.min.js' 
     		])
     	.pipe(plumber())
         .pipe(sourcemaps.init())   
@@ -56,7 +56,7 @@ gulp.task('scripts', function() {
          }))
         .pipe(concat('libs.js')) 
 		.pipe(uglify())	
-		.pipe(rename({suffix: '.min'}))			//мин js
+		.pipe(rename({suffix: '.min'}))			
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('src/js/'));
 });
